@@ -2,6 +2,14 @@
 
 轻量级进程虚拟化
 
+namepsace 没有名字, 使用时是通过 inode 号来指定 namespace
+
+/proc/<pid>/ns/
+
+Each namespace has a unique inode number
+
+This inode number of a each namespace is created when the namespace is created.
+
 ## namespace 种类
 
 | 命令空间 | Kernel版本 | 对应宏                                                                                           |说明       |
@@ -49,10 +57,12 @@ int unshare(int flags);
 
 ## 相关命令
 
-- [lsns]](cmds/lsns.md)
-- [unshare](cmds/unshare.md)
-- [nsenter](cmds/nsenter.md)
+
+- [lsns](cmds/lsns.md)
+- [unshare](cmds/unshare.md) - util with support for all the 6 namespaces
+- [nsenter](cmds/nsenter.md) - a wrapper around setns().
 - [nsexec](cmds/nsexec.md)
+- [ip netns](cmds/ipnetns.md)
 
 ## 参考文档
 
