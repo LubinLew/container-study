@@ -3,5 +3,6 @@
 - namespace
 - cgroups
 - UnionFS
+- overlay
 
 

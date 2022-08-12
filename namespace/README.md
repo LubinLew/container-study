@@ -19,11 +19,13 @@
 
 ## 相关函数
 
-| 函数     | 说明                                                                 |
-|----------|----------------------------------------------------------------------|
-| clone    | 创建一个新的进程和一个新的 namespace, 并将进程 attach 到新 namespace |
-| unshare  | 创建一个新的 namespace, 并将当前进程 attach 到新 namespace           |
-| setns    | 并将当前进程 attach 到一个已经存在的 namespace                       |
+| 函数     | 新进程 | 新namespace | 说明                                                                 |
+|----------|--------|-------------|----------------------------------------------------------------------|
+| clone    | V      | V           | 创建一个新的进程和一个新的 namespace, 并将进程 attach 到新 namespace |
+| unshare  | X      | V           | 创建一个新的 namespace, 并将当前进程 attach 到新 namespace           |
+| setns    | X      | X           | 并将当前进程 attach 到一个已经存在的 namespace                       |
+
+### 函数声明
 
 ```c
 #define _GNU_SOURCE
@@ -37,7 +39,7 @@ int setns(int fd, int nstype);
 int unshare(int flags);
 ```
 
-`clone()` 、`unshare()` 和 `setns()` 系统调用函数可以通过设置 `CLONE_NEW*` 系列宏创建新的 namespace。
+`clone()` 、`unshare()` 系统调用函数可以通过设置 `CLONE_NEW*` 系列宏创建新的 namespace。
 
 > `setns()` 通过参数 `nstype` 设置 `CLONE_NEW*`, 这是可选的。
 >
